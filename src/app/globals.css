@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Custom Jet Design Tokens */
+  --color-bg: #0A0A0B;
+  --color-surface: #0F1115;
+  --color-muted: #16181D;
+  --color-border: #1D2026;
+  --color-text: #E6E7EB;
+  --color-subtle: #9AA0AB;
+  --color-brand: #4DA3FF;
+  --color-brand-2: #7C5CFC;
+  --color-accent-ok: #3DDC97;
+  --color-accent-warn: #FFB020;
+  
+  /* Override shadcn defaults with Jet colors */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --color-sidebar-ring: var(--color-brand);
+  --color-sidebar-border: var(--color-border);
+  --color-sidebar-accent-foreground: var(--color-text);
+  --color-sidebar-accent: var(--color-muted);
+  --color-sidebar-primary-foreground: var(--color-bg);
+  --color-sidebar-primary: var(--color-brand);
+  --color-sidebar-foreground: var(--color-text);
+  --color-sidebar: var(--color-surface);
+  --color-chart-5: var(--color-brand-2);
+  --color-chart-4: var(--color-accent-warn);
+  --color-chart-3: var(--color-brand);
+  --color-chart-2: var(--color-accent-ok);
+  --color-chart-1: var(--color-brand);
+  --color-ring: var(--color-brand);
+  --color-input: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-destructive: var(--color-accent-warn);
+  --color-accent-foreground: var(--color-text);
+  --color-accent: var(--color-muted);
+  --color-muted-foreground: var(--color-subtle);
+  --color-muted: var(--color-muted);
+  --color-secondary-foreground: var(--color-text);
+  --color-secondary: var(--color-surface);
+  --color-primary-foreground: var(--color-bg);
+  --color-primary: var(--color-brand);
+  --color-popover-foreground: var(--color-text);
+  --color-popover: var(--color-surface);
+  --color-card-foreground: var(--color-text);
+  --color-card: var(--color-surface);
+  
+  /* Custom radii from spec */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  /* Light theme defaults (unused but required) */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+}
+
+.dark {
+  /* Jet Dark Theme */
+  --background: #0A0A0B;
+  --foreground: #E6E7EB;
+  --card: #0F1115;
+  --card-foreground: #E6E7EB;
+  --popover: #0F1115;
+  --popover-foreground: #E6E7EB;
+  --primary: #4DA3FF;
+  --primary-foreground: #0A0A0B;
+  --secondary: #0F1115;
+  --secondary-foreground: #E6E7EB;
+  --muted: #16181D;
+  --muted-foreground: #9AA0AB;
+  --accent: #16181D;
+  --accent-foreground: #E6E7EB;
+  --destructive: #FFB020;
+  --border: #1D2026;
+  --input: #16181D;
+  --ring: #4DA3FF;
+  --sidebar: #0F1115;
+  --sidebar-foreground: #E6E7EB;
+  --sidebar-primary: #4DA3FF;
+  --sidebar-primary-foreground: #0A0A0B;
+  --sidebar-accent: #16181D;
+  --sidebar-accent-foreground: #E6E7EB;
+  --sidebar-border: #1D2026;
+  --sidebar-ring: #4DA3FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility classes for Jet design system */
+.rounded-2xl {
+  border-radius: var(--radius-2xl);
+}
+
+.hover\:bg-muted:hover {
+  background-color: var(--color-muted);
+}
+
+.ring-offset-bg {
+  --tw-ring-offset-color: var(--color-bg);
 }
