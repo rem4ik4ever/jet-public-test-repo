@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0b;
+  --foreground: #e6e7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-mono: var(--font-jetbrains-mono);
+  
+  /* Custom color tokens from design spec */
+  --color-bg: #0a0a0b;
+  --color-surface: #0f1115;
+  --color-muted: #16181d;
+  --color-border: #1d2026;
+  --color-text: #e6e7eb;
+  --color-subtle: #9aa0ab;
+  --color-brand: #4da3ff;
+  --color-brand-2: #7c5cfc;
+  --color-accent-ok: #3ddc97;
+  --color-accent-warn: #ffb020;
+  
+  /* Spacing and layout */
+  --spacing-section: 24px; /* py-24 */
+  --spacing-section-md: 28px; /* md:py-28 */
+  --container-max: 7xl;
+  --border-radius-xlarge: 20px; /* 2xl */
+  --border-radius-large: 12px; /* xl */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
